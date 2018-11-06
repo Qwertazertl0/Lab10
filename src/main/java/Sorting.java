@@ -33,7 +33,19 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] bubbleSort(final int[] array) {
-        return null;
+        boolean unsorted = true;
+        while (unsorted) {
+            unsorted = false;
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] < array[i - 1]) {
+                    unsorted = true;
+                    int temp = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = temp;
+                }
+            }
+        }
+        return array;
     }
 
     /**
@@ -44,7 +56,22 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] selectionSort(final int[] array) {
-        return null;
+        for (int i = 0; i < array.length; i++) {
+            int min = array[i];
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                    minIndex = j;
+                }
+            }
+            if (i != minIndex) {
+                int temp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = array[i];
+            }
+        }
+        return array;
     }
 
     /**
@@ -55,7 +82,13 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] mergeSort(final int[] array) {
-        return null;
+        if (array.length == 1) {
+            return array;
+        }
+        int mid = array.length / 2;
+        int[] first = mergeSort(Arrays.copyOfRange(array,0, mid));
+        int[] second = mergeSort(Arrays.copyOfRange(array, mid, array.length));
+        return merge(first, second);
     }
 
     /**

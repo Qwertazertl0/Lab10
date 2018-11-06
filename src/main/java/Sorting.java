@@ -86,7 +86,7 @@ public class Sorting {
             return array;
         }
         int mid = array.length / 2;
-        int[] first = mergeSort(Arrays.copyOfRange(array,0, mid));
+        int[] first = mergeSort(Arrays.copyOfRange(array, 0, mid));
         int[] second = mergeSort(Arrays.copyOfRange(array, mid, array.length));
         return merge(first, second);
     }
